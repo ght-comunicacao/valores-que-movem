@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Catálogo de Iniciativas Inovadoras GHT</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="logo-ght.png" type="image/png" />
+
+  <!-- SheetJS (para ler .xlsx no navegador) -->
+  <script defer src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script defer src="script.js"></script>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header class="top">
+  <div class="top__inner">
+
+    <!-- DESKTOP: LOGO ESQUERDA (GHT) -->
+    <div class="top__logos top__logos--left">
+      <img class="logo logo--ght" src="logo-ght.png" alt="GHT" onerror="this.style.display='none'">
+    </div>
+
+    <!-- MOBILE: IMAGEM ÚNICA (GHT + Valores) -->
+    <div class="top__brand-mobile">
+      <img class="logo" src="logo-ght-e-valores.png" alt="GHT + Valores" onerror="this.style.display='none'">
+    </div>
+
+    <!-- CENTRO -->
+    <div class="top__titlewrap">
+      <h1 class="top__title">Catálogo de Iniciativas Inovadoras GHT</h1>
+      <p class="top__subtitle">Inspire-se e explore você também o universo da IA</p>
+
+      <div class="top__actions">
+        <label class="search">
+          <span class="search__icon">🔎</span>
+          <input id="q" type="search" placeholder="Pesquisar iniciativas, colaborador, área, filial..." />
+          <button id="clearQ" class="search__clear" type="button" title="Limpar">×</button>
+        </label>
+
+        <button id="btnFilters" class="btn btn--primary" type="button">
+          <span class="btn__icon">⛃</span> Filtros
+        </button>
+      </div>
+
+      <div class="top__meta">
+        <span id="countInfo" class="pill">Carregando...</span>
+        <span id="activeChips" class="chips"></span>
+      </div>
+    </div>
+
+    <!-- DESKTOP: LOGO DIREITA (VALORES) -->
+    <div class="top__logos top__logos--right">
+      <img class="logo logo--prog" src="logo-programa.png" alt="Valores que movem atitudes" onerror="this.style.display='none'">
+    </div>
+
+  </div>
+</header>
+
+  <!-- CONTEÚDO -->
+  <main class="wrap">
+    <section id="grid" class="grid" aria-live="polite"></section>
+
+    <div id="empty" class="empty hidden">
+      <h2>Nenhum resultado</h2>
+      <p>Tente ajustar a pesquisa ou remover filtros.</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    © GHT – Inovação e Melhoria Contínua
+  </footer>
+
+  <!-- MODAL DE FILTROS -->
+  <dialog id="filtersDialog" class="dialog">
+    <form method="dialog" class="dialog__panel">
+      <div class="dialog__head">
+        <h3>Filtros</h3>
+        <button class="iconbtn" value="cancel" aria-label="Fechar">×</button>
+      </div>
+
+      <div class="dialog__body">
+        <div class="field">
+          <label for="fUnidade">Filial (Unidade)</label>
+          <select id="fUnidade"></select>
+        </div>
+
+        <div class="field">
+          <label for="fArea">Área</label>
+          <select id="fArea"></select>
+        </div>
+      </div>
+
+      <div class="dialog__foot">
+        <button id="clearFilters" class="btn" value="cancel" type="button">Limpar</button>
+        <button class="btn btn--primary" value="ok" type="submit">Aplicar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- MODAL DE DETALHES -->
+<dialog id="detailsDialog" class="dialog">
+  <form method="dialog" class="dialog__panel dialog__panel--wide">
+    <div class="dialog__head">
+      <h3 id="detailsTitle">Detalhes</h3>
+      <button class="iconbtn" value="cancel" aria-label="Fechar">×</button>
+    </div>
+
+    <div class="dialog__body">
+      <div class="details">
+        <div class="details__meta">
+          <div><b>Colaborador:</b> <span id="dColab"></span></div>
+          <div><b>Área:</b> <span id="dArea"></span></div>
+          <div><b>Filial:</b> <span id="dUnidade"></span></div>
+          <div><b>Tema:</b> <span id="dTema"></span></div>
+        </div>
+
+        <!-- VIEWER (aparece quando existir anexo) -->
+        <div id="dViewer" class="details__viewer hidden">
+          <div class="details__viewerbar">
+            <span id="dViewerLabel">Anexo</span>
+            <a id="dOpenNewTab" class="btn btn--primary" href="#" target="_blank" rel="noopener">Abrir em nova aba</a>
+          </div>
+
+          <iframe id="dFrame" class="details__frame hidden" title="Visualização do anexo"></iframe>
+          <img id="dImg" class="details__img hidden" alt="Anexo da iniciativa" />
+        </div>
+
+        <!-- TEXTO (aparece quando NÃO existir anexo ou como complemento) -->
+        <div class="details__text" id="dDesc"></div>
+      </div>
+    </div>
+
+    <div class="dialog__foot">
+      <button class="btn btn--primary" value="ok" type="submit">Fechar</button>
+    </div>
+  </form>
+</dialog>
+
+</body>
+</html>
