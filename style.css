@@ -177,9 +177,13 @@ body{
 .wrap{
   width:min(1240px, 94vw);
   margin:22px auto 30px;
-
-  margin-top: 220px; /* altura aproximada do header desktop */
 }
+
+/* espaço real abaixo do header fixo */
+body{
+  padding-top: 260px; /* ajuste fino aqui */
+}
+
 
 .grid{
   display:grid;
