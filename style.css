@@ -27,8 +27,8 @@ body{
   top: 0;
   z-index: 999;       /* sobe acima dos cards/modais */
   background:
-    radial-gradient(1200px 400px at 50% 0%, rgba(248,173,30,.15), rgba(0,0,0,0)),
-    linear-gradient(180deg, #101114, #0b0c0f);
+    radial-gradient(1200px 400px at 50% 0%, rgba(0, 0, 0, 0.884), rgba(0, 0, 0, 0.801)),
+    linear-gradient(180deg, #000000, #000000);
   color:#fff;
   border-bottom:1px solid rgba(255,255,255,.06);
 }
