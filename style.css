@@ -23,9 +23,11 @@ body{
 
 /* ===== HEADER (TRAVADO SEM COBRIR O CONTEÚDO) ===== */
 .top{
-  position: sticky;   /* <- mantém espaço e trava no topo */
-  top: 0;
-  z-index: 999;       /* sobe acima dos cards/modais */
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:1000;
   background:
     radial-gradient(1200px 400px at 50% 0%, rgba(0, 0, 0, 0.884), rgba(0, 0, 0, 0.801)),
     linear-gradient(180deg, #000000, #000000);
